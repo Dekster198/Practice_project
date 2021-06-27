@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static "css/styles.css" %}" />
+        <title>Список заказов</title>
+    </head>
+    <body>
+        <table border="1">
+            <tbody>
+              <tr>
+                {% for fields in model_fields %}
+                <th>{{ fields }}</th>
+                {% endfor %} 
+              </tr>
+                {% for data in dataset %}
+                <tr>
+                <td>{{data.id}}</td>
+                <td>{{data.price}}</td>
+                <td>{{data.date}}</td>
+                <td>{{data.id_client}}</td>
+                <td>{{data.id_proc}}</td>
+                <td>{{data.id_video}}</td>
+                <td>{{data.id_mother}}</td>
+                <td><a href="update_order/{{data.id}}">Изменить</a> | <a href="delete_order/{{data.id}}">Удалить</a></td>
+            </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    
+    </body>
+</html>

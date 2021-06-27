@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Добавление процессора</title>
+</head>
+<body>
+    <h1 align='center'>{{title}}</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %} 
+    <table>
+        {{ form }}
+    </table>
+    <button type="submit" value="add_proc">Добавить</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Изменение видеокарты</title>
+</head>
+<body class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Изготовитель</label><br>
+            <input type="text" name="manufacturer" value="{{video.manufacturer}}" />
+        </p>
+        <p>
+            <label>Модель</label><br>
+            <input type="text" name="model" value="{{video.model}}" />
+        </p>
+        <p>
+            <label>Тип памяти</label><br>
+            <input type="text" name="memory_type" value="{{video.memory_type}}" />
+        </p>
+        <p>
+            <label>Объём памяти</label><br>
+            <input type="number" name="memory_size" value="{{video.memory_size}}" />
+        </p>
+        <p>
+            <label>Количество на складе</label><br>
+            <input type="number" name="quantity" value="{{video.quantity}}" />
+        </p>
+        <p>
+            <label>Цена</label><br>
+            <input type="number" name="price" value="{{video.price}}" />
+        </p>
+        <p>
+            <label>Изображение видеокарты</label><br>
+            <input type="file" name="photo" value="{{video.photo}}" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Изменение клиента</title>
+</head>
+<body class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Имя</label><br>
+            <input type="text" name="name" value="{{client.name}}" />
+        </p>
+        <p>
+            <label>Фамилия</label><br>
+            <input type="text" name="surname" value="{{client.surname}}" />
+        </p>
+        <p>
+            <label>Отчество</label><br>
+            <input type="text" name="patronymic" value="{{client.patronymic}}" />
+        </p>
+        <p>
+            <label>Номер телефона</label><br>
+            <input type="text" name="phone_number" value="{{client.phone_number}}" />
+        </p>
+        <p>
+            <label>Город</label><br>
+            <input type="text" name="city" value="{{client.city}}" />
+        </p>
+        <p>
+            <label>Улица</label><br>
+            <input type="text" name="street" value="{{client.street}}" />
+        </p>
+        <p>
+            <label>Дом</label><br>
+            <input type="number" name="house" value="{{client.house}}" />
+        </p>
+        <p>
+            <label>Квартира</label><br>
+            <input type="text" name="flat" value="{{client.flat}}" />
+        </p>
+        <p>
+            <label>Email</label><br>
+            <input type="text" name="email" value="{{client.email}}" />
+        </p>
+        <p>
+            <label>Пароль</label><br>
+            <input type="text" name="password" value="{{client.password}}" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+</body>
+</html>

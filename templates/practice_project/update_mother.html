@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Изменение материнской платы</title>
+</head>
+<body class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Изготовитель</label><br>
+            <input type="text" name="manufacturer" value="{{mother.manufacturer}}" />
+        </p>
+        <p>
+            <label>Модель</label><br>
+            <input type="text" name="model" value="{{mother.model}}" />
+        </p>
+        <p>
+            <label>Сокет</label><br>
+            <input type="text" name="socket" value="{{mother.socket}}" />
+        </p>
+        <p>
+            <label>Чипсет</label><br>
+            <input type="number" name="chipset" value="{{mother.cores}}" />
+        </p>
+        <p>
+            <label>Количество слотов памяти</label><br>
+            <input type="number" name="memory_slots" value="{{mother.threads}}" />
+        </p>
+        <p>
+            <label>Максимальная частота памяти</label><br>
+            <input type="number" name="max_memory_frequency" value="{{mother.max_memory_frequency}}" />
+        </p>
+        <p>
+            <label>Количество на складе</label><br>
+            <input type="number" name="quantity" value="{{mother.quantity}}" />
+        </p>
+        <p>
+            <label>Цена</label><br>
+            <input type="number" name="price" value="{{mother.price}}" />
+        </p>
+        <p>
+            <label>Изображение материнской платы</label><br>
+            <input type="file" name="photo" value="{{mother.photo}}" />
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+</body>
+</html>

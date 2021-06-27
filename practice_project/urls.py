@@ -13,17 +13,42 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from collections import namedtuple
 from django.conf.urls import handler400, static
 from django.contrib import admin
 from django.urls import path
 from django.urls import re_path
 from firstapp import views
+from practice_project import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('', views.index),
-    #re_path(r'^price/(?P<name>\D+)/(?P<price>\d+)/', views.price),
-    #path('products/<int:productid>/', views.products),
+    path('', views.index, name='home'),
+    path('change_create/', views.change_create, name='change_create'),
+    path('chage_rud/', views.change_rud, name='change_rud'),
+    path('view_proc/', views.view_proc, name='view_proc'),
+    path('view_video/', views.view_video, name='view_video'),
+    path('view_video/update_video/<int:id>/', views.update_video, name='video_update'),
+    path('view_video/delete_video/<int:id>/', views.delete_video, name='delete_video'),
+    path('view_mother/', views.view_mother, name='view_mother'),
+    path('view_mother/update_mother/<int:id>/', views.update_mother, name='update_mother'),
+    path('view_order/', views.view_order, name='view_order'),
+    path('view_order/update_order/<int:id>/', views.update_order, name='update_order'),
+    path('view_client/', views.view_client, name='view_client'),
+    path('view_client/update_client/<int:id>/', views.update_client, name='update_client'),
+    path('proc_detail_view/', views.proc_detail_view),
+    path('change_delete/', views.change_delete, name='change_delete'),
+    path('view_proc/delete_proc/<int:id>/', views.delete_proc, name='delete_proc'),
+    path('view_mother/delete_mother/<int:id>/', views.delete_mother, name='delete_mother'),
+    path('view_client/delete_client/<int:id>/', views.delete_client, name='delete_client'),
+    path('view_order/delete_order/<int:id>/', views.delete_order, name='delete_order'),
+    path('view_proc/update_proc/<int:id>/', views.update_proc, name='update_proc'),
+    path('add_proc/', views.add_proc, name='add_proc'),
+    path('add_video/', views.add_video, name='add_video'),
+    path('add_mother/', views.add_mother, name='add_mother'),
+    path('add_client/', views.add_client, name='add_client'),
+    path('add_order/', views.add_order, name='add_order'),
     path('admin/', admin.site.urls),
-] 
+]
 
 handler404 = views.pageNotFound

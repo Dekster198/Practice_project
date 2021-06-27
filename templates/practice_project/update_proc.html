@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Изменение процессора</title>
+</head>
+<body class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Изготовитель</label><br>
+            <input type="text" name="manufacturer" value="{{proc.manufacturer}}" />
+        </p>
+        <p>
+            <label>Модель</label><br>
+            <input type="text" name="model" value="{{proc.model}}" />
+        </p>
+        <p>
+            <label>Тактовая частота</label><br>
+            <input type="number" name="frequency" value="{{proc.frequency}}" />
+        </p>
+        <p>
+            <label>Сокет</label><br>
+            <input type="text" name="socket" value="{{proc.socket}}" />
+        </p>
+        <p>
+            <label>Количество ядер</label><br>
+            <input type="number" name="cores" value="{{proc.cores}}" />
+        </p>
+        <p>
+            <label>Количество потоков</label><br>
+            <input type="number" name="threads" value="{{proc.threads}}" />
+        </p>
+        <p>
+            <label>Количество на складе</label><br>
+            <input type="number" name="quantity" value="{{proc.quantity}}" />
+        </p>
+        <p>
+            <label>Цена</label><br>
+            <input type="number" name="price" value="{{proc.price}}" />
+        </p>
+        <p>
+            <label>Изображение процессора</label><br>
+            <input type="file" name="photo" value="{{proc.photo}}" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Изменение заказа</title>
+</head>
+<body class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Цена</label><br>
+            <input type="number" name="price" value="{{order.price}}" />
+        </p>
+        <p>
+            <label>Идентификатор клиента</label><br>
+            <input type="number" name="id_client" value="{{order.id_client}}}" />
+        </p>
+        <p>
+            <label>Идентификатор процессора</label><br>
+            <input type="number" name="id_proc" value="{{order.id_proc}}" />
+        </p>
+        <p>
+            <label>Идентификатор видеокарты</label><br>
+            <input type="number" name="id_video" value="{{order.id_video}}" />
+        </p>
+        <p>
+            <label>Идентификатор материнской платы</label><br>
+            <input type="number" name="id_mother" value="{{order.id_mother}}" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+</body>
+</html>
