@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.deletion import PROTECT
 
 class Client(models.Model):
     name = models.CharField(max_length=20, verbose_name='Имя')
@@ -11,6 +12,8 @@ class Client(models.Model):
     flat = models.CharField(max_length=5, blank=True, verbose_name='Квартира')
     email = models.CharField(max_length=50, verbose_name='Email')
     password = models.CharField(max_length=50, verbose_name='Пароль')
+    def __str__(self):
+        return '{0}. {1} {2}'.format(self.id, self.name, self.surname)
 
 class Processor(models.Model):
     manufacturer = models.CharField(max_length=15, verbose_name='Производитель')
@@ -22,6 +25,8 @@ class Processor(models.Model):
     quantity = models.IntegerField('Количество на складе')
     price = models.IntegerField(verbose_name='Цена')
     photo = models.ImageField(upload_to='images/proc/', verbose_name='Изображение процессора')
+    def __str__(self):
+        return '{0}. {1} {2}'.format(self.id, self.manufacturer, self.model)
 
 class Videocard(models.Model):
     manufacturer = models.CharField(max_length=15, verbose_name='Производитель')
@@ -31,6 +36,8 @@ class Videocard(models.Model):
     quantity = models.IntegerField(verbose_name='Количество на складе')
     price = models.IntegerField(verbose_name='Цена')
     photo = models.ImageField(upload_to='images/video/', verbose_name='Изображение видеокарты')
+    def __str__(self):
+        return '{0}. {1} {2}'.format(self.id, self.manufacturer, self.model)
 
 class Motherboard(models.Model):
     manufacturer = models.CharField(max_length=15, verbose_name='Производитель')
@@ -42,11 +49,17 @@ class Motherboard(models.Model):
     quantity = models.IntegerField('Количество на складе')
     price = models.IntegerField('Цена')
     photo = models.ImageField(upload_to='images/mother/', verbose_name='Изображение материнской платы')
+    def __str__(self):
+        return '{0}. {1} {2}'.format(self.id, self.manufacturer, self.model)
 
 class Order(models.Model):
     price = models.IntegerField(verbose_name='Цена')
     date = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания заказа')
-    id_client = models.IntegerField(verbose_name='Идентификатор клиента')
-    id_proc = models.IntegerField(blank=True, verbose_name='Идентификатор процессора')
-    id_video = models.IntegerField(blank=True, verbose_name='Идентификатор видеокарты')
-    id_mother = models.IntegerField(blank=True, verbose_name='Идентификатор материнской платы')
+    id_client = models.ForeignKey(Client, on_delete=PROTECT, verbose_name='Клиент', null=True)
+    #id_proc = models.IntegerField(blank=True, verbose_name='Процессор')
+    #id_video = models.IntegerField(blank=True, verbose_name='Видеокарта')
+    #id_mother = models.IntegerField(blank=True, verbose_name='Материнская плата')
+    id_proc = models.ForeignKey(Processor, on_delete=PROTECT, verbose_name='Процессор', null=True)
+    id_video = models.ForeignKey(Videocard, on_delete=PROTECT, verbose_name='Видеокарта', null=True)
+    id_mother = models.ForeignKey(Motherboard, on_delete=PROTECT, verbose_name='Материнская плата', null=True)
+

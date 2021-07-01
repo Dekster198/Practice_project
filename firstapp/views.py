@@ -68,17 +68,17 @@ def add_order(request):
     return render(request, "practice_project/add_order.html", {"form": form, 'title': 'Добавление заказа'})
 
 def view_proc(request):
-    model_fields = [field.name for field in Processor._meta.get_fields()]
+    model_fields = [field.name for field in Processor._meta.get_fields() if field.name != 'order']
     dataset = Processor.objects.all()
     return render(request, 'practice_project/view_proc.html', {'model_fields': model_fields, 'dataset': dataset})
 
 def view_video(request):
-    model_fields = [field.name for field in Videocard._meta.get_fields()]
+    model_fields = [field.name for field in Videocard._meta.get_fields() if field.name != 'order']
     dataset = Videocard.objects.all()
     return render(request, 'practice_project/view_video.html', {'model_fields': model_fields, 'dataset': dataset})
 
 def view_mother(request):
-    model_fields = [field.name for field in Motherboard._meta.get_fields()]
+    model_fields = [field.name for field in Motherboard._meta.get_fields() if field.name != 'order']
     dataset = Motherboard.objects.all()
     return render(request, 'practice_project/view_mother.html', {'model_fields': model_fields, 'dataset': dataset})
 
@@ -88,7 +88,7 @@ def view_order(request):
     return render(request, 'practice_project/view_order.html', {'model_fields': model_fields, 'dataset': dataset})
 
 def view_client(request):
-    model_fields = [field.name for field in Client._meta.get_fields()]
+    model_fields = [field.name for field in Client._meta.get_fields() if field.name != 'order']
     dataset = Client.objects.all()
     return render(request, 'practice_project/view_client.html', {'model_fields': model_fields, 'dataset': dataset})    
 
@@ -231,10 +231,10 @@ def update_order(request, id):
         order = Order.objects.get(id=id)
         if request.method == "POST":
             order.price = request.POST.get("price")
-            order.id_client = request.POST.get("id_client")
-            order.id_proc = request.POST.get("id_proc")
-            order.id_video = request.POST.get("id_video")
-            order.id_mother = request.POST.get("id_mother")
+            order.id_client_id = request.POST.get("id_client_id")
+            order.id_proc_id = request.POST.get("id_proc_id")
+            order.id_video_id = request.POST.get("id_video_id")
+            order.id_mother_id = request.POST.get("id_mother_id")
             order.save()
             return render(request, "practice_project/view_order.html")
         else:
