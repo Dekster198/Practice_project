@@ -3,7 +3,7 @@
 <html>
 
 <head>
-  <link rel="shortcut icon" href="static/images/logo/logo.png" type="image/png">
+  <link rel="shortcut icon" href="/static/images/logo/logo.png" type="image/png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <meta charset="utf-8">
@@ -37,13 +37,12 @@
         <td>{{data.threads}}</td>
         <td>{{data.quantity}}</td>
         <td>{{data.price}}</td>
-        <td>{{data.photo}}</td>
+        <td><img src="/static/images/proc/{{ data.photo.url }}" height="150" width="150"></td>
         <td><a href="update_proc/{{data.id}}">Изменить</a> | <a href="delete_proc/{{data.id}}">Удалить</a></td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
-  <img src="{% static "images/logo/logo.png" %}" alt="Stones along the river">
   <br>
   <a class="btn btn-lg btn-secondary" href="{% url 'change_rud' %}" role="bytton">Вернуться к выбору</a>
 </body>
