@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models.deletion import PROTECT
+from django.db.models.deletion import PROTECT, SET_NULL
 
 class Client(models.Model):
     name = models.CharField(max_length=20, verbose_name='Имя')
@@ -59,7 +59,7 @@ class Order(models.Model):
     #id_proc = models.IntegerField(blank=True, verbose_name='Процессор')
     #id_video = models.IntegerField(blank=True, verbose_name='Видеокарта')
     #id_mother = models.IntegerField(blank=True, verbose_name='Материнская плата')
-    id_proc = models.ForeignKey(Processor, on_delete=PROTECT, verbose_name='Процессор', null=True)
-    id_video = models.ForeignKey(Videocard, on_delete=PROTECT, verbose_name='Видеокарта', null=True)
-    id_mother = models.ForeignKey(Motherboard, on_delete=PROTECT, verbose_name='Материнская плата', null=True)
+    id_proc = models.ForeignKey(Processor, on_delete=SET_NULL, verbose_name='Процессор', null=True, blank=True)
+    id_video = models.ForeignKey(Videocard, on_delete=SET_NULL, verbose_name='Видеокарта', null=True, blank=True)
+    id_mother = models.ForeignKey(Motherboard, on_delete=SET_NULL, verbose_name='Материнская плата', null=True, blank=True)
 

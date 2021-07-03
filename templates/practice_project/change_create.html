@@ -1,14 +1,77 @@
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Выбор</title>
-    </head>
-    <body>
-        <h1 align='center'>Что создавать?</h1>
-        <a href="{% url 'add_proc' %}">Процессор</a>
-        <a href="{% url 'add_video' %}">Видеокарта</a>
-        <a href="{% url 'add_mother' %}">Материнская плата</a>
-        <a href="{% url 'add_client' %}">Клиент</a>
-        <a href="{% url 'add_order' %}">Заказ</a>
-    </body>
+
+<head>
+  <link rel="shortcut icon" href="static/images/logo/logo.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <title>Выбор</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">Интернет-магазин компьютерных комплектующих</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'change_create' %}">Создание записей</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'change_rud' %}">Просмотр, обновление и удаление записей</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <h1 align="center">Что создавать?</h1>
+  <main class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="bg-light p-5 rounded">
+          <h6>Процессор</h6>
+          <p class="lead"></p>
+          <a class="btn btn-lg btn-primary" href="{% url 'add_proc' %}" role="button">Перейти&raquo;</a>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="bg-light p-5 rounded">
+          <h6>Видеокарта</h6>
+          <p class="lead"></p>
+          <a class="btn btn-lg btn-primary" href="{% url 'add_video' %}" role="button">Перейти&raquo;</a>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="bg-light p-5 rounded">
+          <h6>Материнская плата</h6>
+          <p class="lead"></p>
+          <a class="btn btn-lg btn-primary" href="{% url 'add_mother' %}" role="button">Перейти&raquo;</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <div class="bg-light p-5 rounded">
+            <h6>Клиент</h6>
+            <p class="lead"></p>
+            <a class="btn btn-lg btn-primary" href="{% url 'add_client' %}" role="button">Перейти&raquo;</a>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="bg-light p-5 rounded">
+            <h6>Заказ</h6>
+            <p class="lead"></p>
+            <a class="btn btn-lg btn-primary" href="{% url 'add_order' %}" role="button">Перейти&raquo;</a>
+          </div>
+        </div>
+        <div class="col-sm"></div>
+      </div>
+    </div>
+  </main>
+  <a class="btn btn-lg btn-secondary" href="{% url 'home' %}" role="bytton">Вернуться на главную страницу</a>
+</body>
+
 </html>

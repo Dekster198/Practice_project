@@ -1,33 +1,42 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+    <link rel="shortcut icon" href="static/images/logo/logo.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <meta charset="utf-8" />
     <title>Изменение заказа</title>
 </head>
-<body class="container">
+
+<body>
+    <h1 align="center">Обновление информации о заказе</h1>
     <form method="POST">
         {% csrf_token %}
-        <p>
-            <label>Цена</label><br>
+        <div class="mb-3">
+            <label class="form-label">Цена</label><br>
             <input type="number" name="price" value="{{order.price}}" />
-        </p>
-        <p>
-            <label>Идентификатор клиента</label><br>
-            <input type="number" name="id_client" value="{{order.id_client}}}" />
-        </p>
-        <p>
-            <label>Идентификатор процессора</label><br>
-            <input type="number" name="id_proc" value="{{order.id_proc}}" />
-        </p>
-        <p>
-            <label>Идентификатор видеокарты</label><br>
-            <input type="number" name="id_video" value="{{order.id_video}}" />
-        </p>
-        <p>
-            <label>Идентификатор материнской платы</label><br>
-            <input type="number" name="id_mother" value="{{order.id_mother}}" />
-        </p>
-        <input type="submit" value="Сохранить" >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Идентификатор клиента</label><br>
+            <input type="number" name="id_client_id" value="{{order.id_client_id}}" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Идентификатор процессора</label><br>
+            <input type="number" name="id_proc_id" value="{{order.id_proc_id}}" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Идентификатор видеокарты</label><br>
+            <input type="number" name="id_video_id" value="{{order.id_video_id}}" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Идентификатор материнской платы</label><br>
+            <input type="number" name="id_mother_id" value="{{order.id_mother_id}}" />
+        </div>
+        <button type="submit" class="btn btn-primary" value="Сохранить">Сохранить</button>
     </form>
+    <br>
+    <a class="btn btn-lg btn-secondary" href="{% url 'change_rud' %}" role="bytton">Вернуться к выбору</a>
 </body>
+
 </html>

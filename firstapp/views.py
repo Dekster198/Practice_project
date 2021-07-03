@@ -80,17 +80,17 @@ def view_video(request):
 def view_mother(request):
     model_fields = [field.name for field in Motherboard._meta.get_fields() if field.name != 'order']
     dataset = Motherboard.objects.all()
-    return render(request, 'practice_project/view_mother.html', {'model_fields': model_fields, 'dataset': dataset})
+    return render(request, 'practice_project/view_mother.html', {'dataset': dataset})
 
 def view_order(request):
     model_fields = [field.name for field in Order._meta.get_fields()]
     dataset = Order.objects.all()
-    return render(request, 'practice_project/view_order.html', {'model_fields': model_fields, 'dataset': dataset})
+    return render(request, 'practice_project/view_order.html', {'dataset': dataset})
 
 def view_client(request):
     model_fields = [field.name for field in Client._meta.get_fields() if field.name != 'order']
     dataset = Client.objects.all()
-    return render(request, 'practice_project/view_client.html', {'model_fields': model_fields, 'dataset': dataset})    
+    return render(request, 'practice_project/view_client.html', {'dataset': dataset})    
 
 def proc_detail_view(request, id):
     try:

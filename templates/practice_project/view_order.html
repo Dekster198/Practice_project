@@ -1,33 +1,44 @@
 <!DOCTYPE html>
 {% load static %}
 <html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="{% static "css/styles.css" %}" />
-        <title>Список заказов</title>
-    </head>
-    <body>
-        <table border="1">
-            <tbody>
-              <tr>
-                {% for fields in model_fields %}
-                <th>{{ fields }}</th>
-                {% endfor %} 
-              </tr>
-                {% for data in dataset %}
-                <tr>
-                <td>{{data.id}}</td>
-                <td>{{data.price}}</td>
-                <td>{{data.date}}</td>
-                <td>{{data.id_client_id}}</td>
-                <td>{{data.id_proc_id}}</td>
-                <td>{{data.id_video_id}}</td>
-                <td>{{data.id_mother_id}}</td>
-                <td><a href="update_order/{{data.id}}">Изменить</a> | <a href="delete_order/{{data.id}}">Удалить</a></td>
-            </tr>
-                {% endfor %}
-            </tbody>
-          </table>
-    
-    </body>
+
+<head>
+  <link rel="shortcut icon" href="static/images/logo/logo.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <title>Список заказов</title>
+</head>
+
+<body>
+  <h1 align="center">Список заказов</h1>
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th>ID</th>
+        <th>Цена</th>
+        <th>Дата</th>
+        <th>ID клиента</th>
+        <th>ID процессора</th>
+        <th>ID видеокарты</th>
+        <th>ID материнской платы</th>
+      </tr>
+      {% for data in dataset %}
+      <tr>
+        <td>{{data.id}}</td>
+        <td>{{data.price}}</td>
+        <td>{{data.date}}</td>
+        <td>{{data.id_client_id}}</td>
+        <td>{{data.id_proc_id}}</td>
+        <td>{{data.id_video_id}}</td>
+        <td>{{data.id_mother_id}}</td>
+        <td><a href="update_order/{{data.id}}">Изменить</a> | <a href="delete_order/{{data.id}}">Удалить</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <br>
+  <a class="btn btn-lg btn-secondary" href="{% url 'change_rud' %}" role="bytton">Вернуться к выбору</a>
+</body>
+
 </html>

@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+    <link rel="shortcut icon" href="static/images/logo/logo.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <meta charset="utf-8" />
     <title>Добавление процессора</title>
 </head>
+
 <body>
     <h1 align='center'>{{title}}</h1>
     <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %} 
-    <table>
-        {{ form }}
-    </table>
-    <button type="submit" value="add_proc">Добавить</button>
-</form>
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+        <button type="submit" class="btn btn-primary" value="add_proc">Добавить</button>
+    </form>
+    <br>
+    <a class="btn btn-lg btn-secondary" href="{% url 'change_create' %}" role="bytton">Вернуться к выбору</a>
 </body>
+
 </html>

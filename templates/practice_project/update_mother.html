@@ -1,49 +1,58 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+    <link rel="shortcut icon" href="static/images/logo/logo.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <meta charset="utf-8" />
     <title>Изменение материнской платы</title>
 </head>
-<body class="container">
+
+<body>
+    <h1 align="center">Обновление информации о материнской плате</h1>
     <form method="POST">
         {% csrf_token %}
-        <p>
-            <label>Изготовитель</label><br>
+        <div class="mb-3">
+            <label class="form-label">Изготовитель</label><br>
             <input type="text" name="manufacturer" value="{{mother.manufacturer}}" />
-        </p>
-        <p>
-            <label>Модель</label><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Модель</label><br>
             <input type="text" name="model" value="{{mother.model}}" />
-        </p>
-        <p>
-            <label>Сокет</label><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Сокет</label><br>
             <input type="text" name="socket" value="{{mother.socket}}" />
-        </p>
-        <p>
-            <label>Чипсет</label><br>
-            <input type="number" name="chipset" value="{{mother.cores}}" />
-        </p>
-        <p>
-            <label>Количество слотов памяти</label><br>
-            <input type="number" name="memory_slots" value="{{mother.threads}}" />
-        </p>
-        <p>
-            <label>Максимальная частота памяти</label><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Чипсет</label><br>
+            <input type="text" name="chipset" value="{{mother.chipset}}" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Количество слотов памяти</label><br>
+            <input type="number" name="memory_slots" value="{{mother.memory_slots}}" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Максимальная частота памяти</label><br>
             <input type="number" name="max_memory_frequency" value="{{mother.max_memory_frequency}}" />
-        </p>
-        <p>
-            <label>Количество на складе</label><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Количество на складе</label><br>
             <input type="number" name="quantity" value="{{mother.quantity}}" />
-        </p>
-        <p>
-            <label>Цена</label><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Цена</label><br>
             <input type="number" name="price" value="{{mother.price}}" />
-        </p>
-        <p>
-            <label>Изображение материнской платы</label><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Изображение материнской платы</label><br>
             <input type="file" name="photo" value="{{mother.photo}}" />
-        </p>
-        <input type="submit" value="Сохранить">
+        </div>
+        <button type="submit" class="btn btn-primary" value="Сохранить">Сохранить</button>
     </form>
+    <br>
+    <a class="btn btn-lg btn-secondary" href="{% url 'change_rud' %}" role="bytton">Вернуться к выбору</a>
 </body>
+
 </html>

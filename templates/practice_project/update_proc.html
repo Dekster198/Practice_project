@@ -1,49 +1,58 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+    <link rel="shortcut icon" href="static/images/logo/logo.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <meta charset="utf-8" />
     <title>Изменение процессора</title>
 </head>
-<body class="container">
+
+<body>
+    <h1 align="center">Обновление информации о процессоре</h1>
     <form method="POST">
         {% csrf_token %}
-        <p>
-            <label>Изготовитель</label><br>
+        <div class="mb-3">
+            <label class="form-label">Изготовитель</label><br>
             <input type="text" name="manufacturer" value="{{proc.manufacturer}}" />
-        </p>
-        <p>
-            <label>Модель</label><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Модель</label><br>
             <input type="text" name="model" value="{{proc.model}}" />
-        </p>
-        <p>
-            <label>Тактовая частота</label><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Тактовая частота</label><br>
             <input type="number" name="frequency" value="{{proc.frequency}}" />
-        </p>
-        <p>
-            <label>Сокет</label><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Сокет</label><br>
             <input type="text" name="socket" value="{{proc.socket}}" />
-        </p>
-        <p>
-            <label>Количество ядер</label><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Количество ядер</label><br>
             <input type="number" name="cores" value="{{proc.cores}}" />
-        </p>
-        <p>
-            <label>Количество потоков</label><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Количество потоков</label><br>
             <input type="number" name="threads" value="{{proc.threads}}" />
-        </p>
-        <p>
-            <label>Количество на складе</label><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Количество на складе</label><br>
             <input type="number" name="quantity" value="{{proc.quantity}}" />
-        </p>
-        <p>
-            <label>Цена</label><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Цена</label><br>
             <input type="number" name="price" value="{{proc.price}}" />
-        </p>
-        <p>
-            <label>Изображение процессора</label><br>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Изображение процессора</label><br>
             <input type="file" name="photo" value="{{proc.photo}}" />
-        </p>
-        <input type="submit" value="Сохранить" >
+        </div>
+        <button type="submit" class="btn btn-primary" value="Сохранить">Сохранить</button>
     </form>
+    <br>
+    <a class="btn btn-lg btn-secondary" href="{% url 'change_rud' %}" role="bytton">Вернуться к выбору</a>
 </body>
+
 </html>
