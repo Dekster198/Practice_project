@@ -15,11 +15,11 @@
         {% csrf_token %}
         <div class="mb-3">
             <label class="form-label">Цена</label><br>
-            <input type="number" name="price" value="{{order.price}}" />
+            <input type="number" name="price" value="{{order.price}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Идентификатор клиента</label><br>
-            <input type="number" name="id_client_id" value="{{order.id_client_id}}" />
+            <input type="number" name="id_client_id" value="{{order.id_client_id}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Идентификатор процессора</label><br>

@@ -15,39 +15,39 @@
         {% csrf_token %}
         <div class="mb-3">
             <label class="form-label">Изготовитель</label><br>
-            <input type="text" name="manufacturer" value="{{mother.manufacturer}}" />
+            <input type="text" name="manufacturer" value="{{mother.manufacturer}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Модель</label><br>
-            <input type="text" name="model" value="{{mother.model}}" />
+            <input type="text" name="model" value="{{mother.model}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Сокет</label><br>
-            <input type="text" name="socket" value="{{mother.socket}}" />
+            <input type="text" name="socket" value="{{mother.socket}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Чипсет</label><br>
-            <input type="text" name="chipset" value="{{mother.chipset}}" />
+            <input type="text" name="chipset" value="{{mother.chipset}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Количество слотов памяти</label><br>
-            <input type="number" name="memory_slots" value="{{mother.memory_slots}}" />
+            <input type="number" name="memory_slots" value="{{mother.memory_slots}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Максимальная частота памяти</label><br>
-            <input type="number" name="max_memory_frequency" value="{{mother.max_memory_frequency}}" />
+            <input type="number" name="max_memory_frequency" value="{{mother.max_memory_frequency}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Количество на складе</label><br>
-            <input type="number" name="quantity" value="{{mother.quantity}}" />
+            <input type="number" name="quantity" value="{{mother.quantity}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Цена</label><br>
-            <input type="number" name="price" value="{{mother.price}}" />
+            <input type="number" name="price" value="{{mother.price}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Изображение материнской платы</label><br>
-            <input type="file" name="photo" value="{{mother.photo}}" />
+            <input type="file" name="photo" value="{{mother.photo}}" required/>
         </div>
         <button type="submit" class="btn btn-primary" value="Сохранить">Сохранить</button>
     </form>

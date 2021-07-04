@@ -15,39 +15,39 @@
         {% csrf_token %}
         <div class="mb-3">
             <label class="form-label">Изготовитель</label><br>
-            <input type="text" name="manufacturer" value="{{proc.manufacturer}}" />
+            <input type="text" name="manufacturer" value="{{proc.manufacturer}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Модель</label><br>
-            <input type="text" name="model" value="{{proc.model}}" />
+            <input type="text" name="model" value="{{proc.model}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Тактовая частота</label><br>
-            <input type="number" name="frequency" value="{{proc.frequency}}" />
+            <input type="number" name="frequency" value="{{proc.frequency}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Сокет</label><br>
-            <input type="text" name="socket" value="{{proc.socket}}" />
+            <input type="text" name="socket" value="{{proc.socket}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Количество ядер</label><br>
-            <input type="number" name="cores" value="{{proc.cores}}" />
+            <input type="number" name="cores" value="{{proc.cores}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Количество потоков</label><br>
-            <input type="number" name="threads" value="{{proc.threads}}" />
+            <input type="number" name="threads" value="{{proc.threads}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Количество на складе</label><br>
-            <input type="number" name="quantity" value="{{proc.quantity}}" />
+            <input type="number" name="quantity" value="{{proc.quantity}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Цена</label><br>
-            <input type="number" name="price" value="{{proc.price}}" />
+            <input type="number" name="price" value="{{proc.price}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Изображение процессора</label><br>
-            <input type="file" name="photo" value="{{proc.photo}}" />
+            <input type="file" name="photo" value="{{proc.photo}}" required/>
         </div>
         <button type="submit" class="btn btn-primary" value="Сохранить">Сохранить</button>
     </form>

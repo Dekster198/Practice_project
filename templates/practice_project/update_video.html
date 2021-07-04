@@ -15,31 +15,31 @@
         {% csrf_token %}
         <div class="mb-3">
             <label class="form-label">Изготовитель</label><br>
-            <input type="text" name="manufacturer" value="{{video.manufacturer}}" />
+            <input type="text" name="manufacturer" value="{{video.manufacturer}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Модель</label><br>
-            <input type="text" name="model" value="{{video.model}}" />
+            <input type="text" name="model" value="{{video.model}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Тип памяти</label><br>
-            <input type="text" name="memory_type" value="{{video.memory_type}}" />
+            <input type="text" name="memory_type" value="{{video.memory_type}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Объём памяти</label><br>
-            <input type="number" name="memory_size" value="{{video.memory_size}}" />
+            <input type="number" name="memory_size" value="{{video.memory_size}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Количество на складе</label><br>
-            <input type="number" name="quantity" value="{{video.quantity}}" />
+            <input type="number" name="quantity" value="{{video.quantity}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Цена</label><br>
-            <input type="number" name="price" value="{{video.price}}" />
+            <input type="number" name="price" value="{{video.price}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Изображение видеокарты</label><br>
-            <input type="file" name="photo" value="{{video.photo}}" />
+            <input type="file" name="photo" value="{{video.photo}}" required/>
         </div>
         <button type="submit" class="btn btn-primary" value="Сохранить">Сохранить</button>
     </form>

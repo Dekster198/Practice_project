@@ -92,26 +92,14 @@ def view_client(request):
     dataset = Client.objects.all()
     return render(request, 'practice_project/view_client.html', {'dataset': dataset})    
 
-def proc_detail_view(request, id):
-    try:
-        # Получаем процессор по-определенному id
-        data = Processor.objects.post(id=id)
-    except Processor.DoesNotExist:
-        raise Http404('Такого процессора не существует')
- 
-    return render(request, 'practice_project/proc_detail_view.html', {'data': data})
-
 def change_delete(request):
     return render(request, 'practice_project/change_delete.html')
-
-def page_delete_proc(request):
-    return render(request, 'practice_project/delete_proc.html')
 
 def delete_proc(request, id):
     try:
         proc = Processor.objects.get(id=id)
         proc.delete()
-        return HttpResponseRedirect("'practice_project/view_proc.html'")
+        return redirect('view_proc')
     except Processor.DoesNotExist:
         return HttpResponseNotFound("<h2>Процессор не найден</h2>")
 
@@ -119,7 +107,7 @@ def delete_video(request, id):
     try:
         video = Videocard.objects.get(id=id)
         video.delete()
-        return render(request, 'practice_project/view_video.html')
+        return redirect('view_video')
     except Processor.DoesNotExist:
         return HttpResponseNotFound("<h2>Видеокарта не найдена</h2>")
 
@@ -127,7 +115,7 @@ def delete_mother(request, id):
     try:
         mother = Motherboard.objects.get(id=id)
         mother.delete()
-        return render(request, 'practice_project/view_mother.html')
+        return redirect('view_mother')
     except Motherboard.DoesNotExist:
         return HttpResponseNotFound("<h2>Материнская плата не найдена</h2>")
 
@@ -135,7 +123,7 @@ def delete_client(request, id):
     try:
         client = Client.objects.get(id=id)
         client.delete()
-        return render(request, 'practice_project/view_client.html')
+        return redirect('view_client')
     except Client.DoesNotExist:
         return HttpResponseNotFound("<h2>Клиент не найден</h2>")
 
@@ -143,7 +131,7 @@ def delete_order(request, id):
     try:
         order = Order.objects.get(id=id)
         order.delete()
-        return render(request, 'practice_project/view_order.html')
+        return redirect('view_order')
     except Order.DoesNotExist:
         return HttpResponseNotFound("<h2>Заказ не найден</h2>")
 
@@ -161,7 +149,7 @@ def update_proc(request, id):
             proc.price = request.POST.get("price")
             proc.photo = request.POST.get("photo")
             proc.save()
-            return render(request, "practice_project/view_proc.html")
+            return redirect('view_proc')
         else:
             return render(request, "practice_project/update_proc.html", {"proc": proc})
     except Processor.DoesNotExist:
@@ -179,7 +167,7 @@ def update_video(request, id):
             video.price = request.POST.get("price")
             video.photo = request.POST.get("photo")
             video.save()
-            return render(request, "practice_project/view_video.html")
+            return redirect('view_video')
         else:
             return render(request, "practice_project/update_video.html", {"video": video})
     except Processor.DoesNotExist:
@@ -199,7 +187,7 @@ def update_mother(request, id):
             mother.price = request.POST.get("price")
             mother.photo = request.POST.get("photo")
             mother.save()
-            return render(request, "practice_project/view_mother.html")
+            return redirect('view_mother')
         else:
             return render(request, "practice_project/update_mother.html", {"mother": mother})
     except Processor.DoesNotExist:
@@ -220,7 +208,7 @@ def update_client(request, id):
             client.email = request.POST.get("email")
             client.password = request.POST.get("password")
             client.save()
-            return render(request, "practice_project/view_client.html")
+            return redirect('view_client')
         else:
             return render(request, "practice_project/update_client.html", {"client": client})
     except Client.DoesNotExist:
@@ -236,7 +224,7 @@ def update_order(request, id):
             order.id_video_id = request.POST.get("id_video_id")
             order.id_mother_id = request.POST.get("id_mother_id")
             order.save()
-            return render(request, "practice_project/view_order.html")
+            return redirect('view_order')
         else:
             return render(request, "practice_project/update_order.html", {"order": order})
     except Order.DoesNotExist:

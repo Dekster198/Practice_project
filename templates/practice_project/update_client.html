@@ -15,31 +15,31 @@
         {% csrf_token %}
         <div class="mb-3">
             <label class="form-label">Имя</label>
-            <input class="form-control" type="text" name="name" value="{{client.name}}" />
+            <input class="form-control" type="text" name="name" value="{{client.name}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Фамилия</label>
-            <input class="form-control" type="text" name="surname" value="{{client.surname}}" />
+            <input class="form-control" type="text" name="surname" value="{{client.surname}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Отчество</label>
-            <input class="form-control" type="text" name="patronymic" value="{{client.patronymic}}" />
+            <input class="form-control" type="text" name="patronymic" value="{{client.patronymic}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Номер телефона</label>
-            <input class="form-control" type="text" name="phone_number" value="{{client.phone_number}}" />
+            <input class="form-control" type="text" name="phone_number" value="{{client.phone_number}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Город</label>
-            <input class="form-control" type="text" name="city" value="{{client.city}}" />
+            <input class="form-control" type="text" name="city" value="{{client.city}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Улица</label>
-            <input class="form-control" type="text" name="street" value="{{client.street}}" />
+            <input class="form-control" type="text" name="street" value="{{client.street}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Дом</label>
-            <input class="form-control" type="number" name="house" value="{{client.house}}" />
+            <input class="form-control" type="number" name="house" value="{{client.house}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Квартира</label>
@@ -47,11 +47,11 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Email</label>
-            <input class="form-control" type="text" name="email" value="{{client.email}}" />
+            <input class="form-control" type="text" name="email" value="{{client.email}}" required/>
         </div>
         <div class="mb-3">
             <label class="form-label">Пароль</label>
-            <input class="form-control" type="text" name="password" value="{{client.password}}" />
+            <input class="form-control" type="text" name="password" value="{{client.password}}" required/>
         </div>
         <button type="submit" class="btn btn-primary" value="Сохранить">Сохранить</button>
     </form>
