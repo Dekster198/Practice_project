@@ -1,5 +1,6 @@
 from django import forms
 from django.forms import fields
+from django.shortcuts import resolve_url
 from .models import *
 
 class AddProc(forms.ModelForm):
@@ -27,6 +28,32 @@ class AddOrder(forms.ModelForm):
         model = Order
         fields = ['price', 'id_client', 'id_proc', 'id_video', 'id_mother']
 
+class FilterFormProduct(forms.Form):
+    min_price = forms.IntegerField(label='от', required=False)
+    max_price = forms.IntegerField(label='до', required=False)
+    ordering = forms.ChoiceField(label='сортировка', required=False, choices=[
+        ['manufacturer', 'по алфавиту(изготовитель)'],
+        ['model', 'по алфавиту(модель)'],
+        ['price', 'по увеличению цены'],
+        ['-price', 'по уменьшению цены'],
+    ])
+
+class FilterFormClient(forms.Form):
+    ordering = forms.ChoiceField(label='сортировка', required=False, choices=[
+        ['name', 'по имени(в алфавитном порядке)'],
+        ['-name', 'по имени(в обратном порядке'],
+        ['surname', 'по фамилии(в алфавитном порядке)'],
+        ['-surname', 'по фамилии(в обратном порядке'],
+        ['city', 'по городу']
+    ])
+
+class FilterFormOrder(forms.Form):
+    ordering = forms.ChoiceField(label='сортировка', required=False, choices=[
+        ['price', 'по увеличению цены'],
+        ['-price', 'по уменьшению цены'],
+        ['date', 'по возрастанию даты'],
+        ['-date', 'по убыванию даты']
+    ])
 
 class DelProc(forms.Form):
     id = forms.IntegerField()

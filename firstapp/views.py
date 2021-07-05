@@ -70,27 +70,59 @@ def add_order(request):
 def view_proc(request):
     model_fields = [field.name for field in Processor._meta.get_fields() if field.name != 'order']
     dataset = Processor.objects.all()
-    return render(request, 'practice_project/view_proc.html', {'model_fields': model_fields, 'dataset': dataset})
+    filter_form = FilterFormProduct(request.GET)
+    if(filter_form.is_valid()):
+        if(filter_form.cleaned_data['min_price']):
+            dataset = dataset.filter(price__gte=filter_form.cleaned_data['min_price'])
+        if(filter_form.cleaned_data['max_price']):
+            dataset = dataset.filter(price__lte=filter_form.cleaned_data['max_price'])   
+        if(filter_form.cleaned_data['ordering']):
+            dataset = dataset.order_by(filter_form.cleaned_data['ordering']) 
+    return render(request, 'practice_project/view_proc.html', {'model_fields': model_fields, 'dataset': dataset, 'filter_form': filter_form})
 
 def view_video(request):
     model_fields = [field.name for field in Videocard._meta.get_fields() if field.name != 'order']
     dataset = Videocard.objects.all()
-    return render(request, 'practice_project/view_video.html', {'model_fields': model_fields, 'dataset': dataset})
+    filter_form = FilterFormProduct(request.GET)
+    if(filter_form.is_valid()):
+        if(filter_form.cleaned_data['min_price']):
+            dataset = dataset.filter(price__gte=filter_form.cleaned_data['min_price'])
+        if(filter_form.cleaned_data['max_price']):
+            dataset = dataset.filter(price__lte=filter_form.cleaned_data['max_price'])   
+        if(filter_form.cleaned_data['ordering']):
+            dataset = dataset.order_by(filter_form.cleaned_data['ordering']) 
+    return render(request, 'practice_project/view_video.html', {'model_fields': model_fields, 'dataset': dataset, 'filter_form': filter_form})
 
 def view_mother(request):
     model_fields = [field.name for field in Motherboard._meta.get_fields() if field.name != 'order']
     dataset = Motherboard.objects.all()
-    return render(request, 'practice_project/view_mother.html', {'dataset': dataset})
+    filter_form = FilterFormProduct(request.GET)
+    if(filter_form.is_valid()):
+        if(filter_form.cleaned_data['min_price']):
+            dataset = dataset.filter(price__gte=filter_form.cleaned_data['min_price'])
+        if(filter_form.cleaned_data['max_price']):
+            dataset = dataset.filter(price__lte=filter_form.cleaned_data['max_price'])   
+        if(filter_form.cleaned_data['ordering']):
+            dataset = dataset.order_by(filter_form.cleaned_data['ordering']) 
+    return render(request, 'practice_project/view_mother.html', {'dataset': dataset, 'filter_form': filter_form})
 
 def view_order(request):
     model_fields = [field.name for field in Order._meta.get_fields()]
     dataset = Order.objects.all()
-    return render(request, 'practice_project/view_order.html', {'dataset': dataset})
+    filter_form = FilterFormOrder(request.GET)
+    if(filter_form.is_valid()):  
+        if(filter_form.cleaned_data['ordering']):
+            dataset = dataset.order_by(filter_form.cleaned_data['ordering']) 
+    return render(request, 'practice_project/view_order.html', {'dataset': dataset, 'filter_form': filter_form})
 
 def view_client(request):
     model_fields = [field.name for field in Client._meta.get_fields() if field.name != 'order']
     dataset = Client.objects.all()
-    return render(request, 'practice_project/view_client.html', {'dataset': dataset})    
+    filter_form = FilterFormClient(request.GET)
+    if(filter_form.is_valid()):  
+        if(filter_form.cleaned_data['ordering']):
+            dataset = dataset.order_by(filter_form.cleaned_data['ordering']) 
+    return render(request, 'practice_project/view_client.html', {'dataset': dataset, 'filter_form': filter_form})    
 
 def change_delete(request):
     return render(request, 'practice_project/change_delete.html')

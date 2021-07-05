@@ -12,6 +12,10 @@
 
 <body>
   <h1 align="center">Список заказов</h1>
+  <form method="GET">
+    {{ filter_form.as_p }}
+    <input class="btn btn-lg btn-success" type="submit" value="Поиск">
+  </form>
   <table class="table table-bordered">
     <tbody>
       <tr>

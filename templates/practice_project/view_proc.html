@@ -12,6 +12,11 @@
 
 <body>
   <h1 align="center">Список процессоров</h1>
+  <h6>Фильтрация по цене</h6>
+  <form method="GET">
+    {{ filter_form.as_p }}
+    <input class="btn btn-lg btn-success" type="submit" value="Поиск">
+  </form>
   <table class="table table-bordered">
     <tbody>
       <tr>
