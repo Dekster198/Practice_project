@@ -12,7 +12,6 @@
 <body>
     <h1 align="center">Обновление информации о материнской плате</h1>
     <form method="POST">
-        {% csrf_token %}
         <div class="mb-3">
             <label class="form-label">Изготовитель</label><br>
             <input type="text" name="manufacturer" value="{{mother.manufacturer}}" required/>

@@ -268,59 +268,47 @@ def update_order(request, id):
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = serializers.UserSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = serializers.UserSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-class ClientList(generics.ListAPIView):
+class ClientList(generics.ListCreateAPIView):
     queryset = Client.objects.all()
     serializer_class = serializers.ClientSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-class ClientDetail(generics.RetrieveAPIView):
+class ClientDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Client.objects.all()
     serializer_class = serializers.ClientSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class OrderList(generics.ListCreateAPIView):
     queryset = Order.objects.all()
     serializer_class = serializers.OrderSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Order.objects.all()
     serializer_class = serializers.OrderSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-class ProcessorList(generics.ListAPIView):
+class ProcessorList(generics.ListCreateAPIView):
     queryset = Processor.objects.all()
     serializer_class = serializers.ProcessorSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-class ProcessorDetail(generics.RetrieveAPIView):
+class ProcessorDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Processor.objects.all()
     serializer_class = serializers.ProcessorSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-class VideocardList(generics.ListAPIView):
+class VideocardList(generics.ListCreateAPIView):
     queryset = Videocard.objects.all()
     serializer_class = serializers.VideocardSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-class VideocardDetail(generics.RetrieveAPIView):
+class VideocardDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Videocard.objects.all()
     serializer_class = serializers.VideocardSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-class MotherboardList(generics.ListAPIView):
+class MotherboardList(generics.ListCreateAPIView):
     queryset = Motherboard.objects.all()
     serializer_class = serializers.MotherboardSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class MotherboardDetail(generics.RetrieveAPIView):
     queryset = Motherboard.objects.all()
     serializer_class = serializers.MotherboardSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]

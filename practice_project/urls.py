@@ -51,7 +51,7 @@ urlpatterns = [
     path('api_auth/', include('rest_framework.urls')),
     path('user/', views.UserList.as_view()),
     path('user/<int:pk>/', views.UserDetail.as_view()),
-    path('client/', views.ClientList.as_view()),
+    path('client', views.ClientList.as_view()),
     path('client/<int:pk>/', views.ClientDetail.as_view()),
     path('order/', views.OrderList.as_view()),
     path('order/<int:pk>/', views.OrderDetail.as_view()),

@@ -12,7 +12,6 @@
 <body>
     <h1 align="center">Обновление информации о клиенте</h1>
     <form method="POST">
-        {% csrf_token %}
         <div class="mb-3">
             <label class="form-label">Имя</label>
             <input class="form-control" type="text" name="name" value="{{client.name}}" required/>

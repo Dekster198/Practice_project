@@ -16,7 +16,7 @@ class OrderSerializer(serializers.ModelSerializer):
 class ClientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Client
-        fields = ['id', 'name', 'surname', 'patronymic', 'city']
+        fields = ['id', 'name', 'surname', 'patronymic', 'phone_number', 'city', 'street', 'house', 'flat', 'email', 'password']
 
 class ProcessorSerializer(serializers.ModelSerializer):
     class Meta:
