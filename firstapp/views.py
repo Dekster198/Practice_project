@@ -1,3 +1,6 @@
+from rest_framework import generics, permissions
+from django.contrib.auth.models import User
+from practice_project import serializers
 from .forms import *
 from firstapp.models import Processor
 from django import http
@@ -261,3 +264,63 @@ def update_order(request, id):
             return render(request, "practice_project/update_order.html", {"order": order})
     except Order.DoesNotExist:
         return HttpResponseNotFound("<h2>Заказ не найден</h2>")
+
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = serializers.UserSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class UserDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = serializers.UserSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class ClientList(generics.ListAPIView):
+    queryset = Client.objects.all()
+    serializer_class = serializers.ClientSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class ClientDetail(generics.RetrieveAPIView):
+    queryset = Client.objects.all()
+    serializer_class = serializers.ClientSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class OrderList(generics.ListCreateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = serializers.OrderSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Order.objects.all()
+    serializer_class = serializers.OrderSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class ProcessorList(generics.ListAPIView):
+    queryset = Processor.objects.all()
+    serializer_class = serializers.ProcessorSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class ProcessorDetail(generics.RetrieveAPIView):
+    queryset = Processor.objects.all()
+    serializer_class = serializers.ProcessorSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class VideocardList(generics.ListAPIView):
+    queryset = Videocard.objects.all()
+    serializer_class = serializers.VideocardSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class VideocardDetail(generics.RetrieveAPIView):
+    queryset = Videocard.objects.all()
+    serializer_class = serializers.VideocardSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class MotherboardList(generics.ListAPIView):
+    queryset = Motherboard.objects.all()
+    serializer_class = serializers.MotherboardSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+class MotherboardDetail(generics.RetrieveAPIView):
+    queryset = Motherboard.objects.all()
+    serializer_class = serializers.MotherboardSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]

@@ -16,11 +16,13 @@ Including another URLconf
 from collections import namedtuple
 from django.conf.urls import handler400, static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.urls import re_path
 from firstapp import views
 from practice_project import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from rest_framework.urlpatterns import format_suffix_patterns
+from firstapp import views
 
 urlpatterns = [
     path('', views.index, name='home'),
@@ -46,7 +48,22 @@ urlpatterns = [
     path('view_mother/delete_mother/<int:id>/', views.delete_mother, name='delete_mother'),
     path('view_client/delete_client/<int:id>/', views.delete_client, name='delete_client'),
     path('view_order/delete_order/<int:id>/', views.delete_order, name='delete_order'),
+    path('api_auth/', include('rest_framework.urls')),
+    path('user/', views.UserList.as_view()),
+    path('user/<int:pk>/', views.UserDetail.as_view()),
+    path('client/', views.ClientList.as_view()),
+    path('client/<int:pk>/', views.ClientDetail.as_view()),
+    path('order/', views.OrderList.as_view()),
+    path('order/<int:pk>/', views.OrderDetail.as_view()),
+    path('proc/', views.ProcessorList.as_view()),
+    path('proc/<int:pk>/', views.ProcessorDetail.as_view()),
+    path('video/', views.VideocardList.as_view()),
+    path('video/<int:pk>/', views.VideocardDetail.as_view()),
+    path('mother/', views.MotherboardList.as_view()),
+    path('mother/<int:pk>/', views.MotherboardDetail.as_view()),
     path('admin/', admin.site.urls),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
 
 handler404 = views.pageNotFound
