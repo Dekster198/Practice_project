@@ -30,6 +30,11 @@ class AddOrder(forms.ModelForm):
         model = Order
         fields = ['price', 'id_client', 'id_proc', 'id_video', 'id_mother']
 
+class AuthUser(forms.ModelForm):
+    class Meta:
+        model = Client
+        fields = ['email', 'password']
+
 class FilterFormProduct(forms.Form):
     min_price = forms.IntegerField(label='от', required=False)
     max_price = forms.IntegerField(label='до', required=False)

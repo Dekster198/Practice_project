@@ -9,7 +9,7 @@ from .forms import *
 from firstapp.models import Processor
 from django import http
 from django.http.response import Http404, HttpResponseNotFound
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
 from django.dispatch import receiver
 from django.db.models.signals import post_save
@@ -288,7 +288,16 @@ def reg_user(request):
     return render(request, "practice_project/reg_user.html", {"form": form})
   
 def auth_user(request):
-    return redirect('auth_user')
+    if (request.method == 'POST'):
+        form = AuthUser(request.POST, request.FILES)
+        if (form.is_valid()):
+            email = form['email'].value()
+            password = form['password'].value()
+            if(Client.objects.filter(email=email, password=password)):
+                return redirect('home')
+    else:
+        form = AuthUser()
+    return render(request, "practice_project/auth_user.html", {"form": form})
 
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()
