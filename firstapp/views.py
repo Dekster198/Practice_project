@@ -1,5 +1,9 @@
+from typing import Reversible
+from rest_framework import status
+from rest_framework.test import APITestCase
 from rest_framework import generics, permissions
 from django.contrib.auth.models import User
+from rest_framework.serializers import ListSerializer
 from practice_project import serializers
 from .forms import *
 from firstapp.models import Processor
@@ -7,6 +11,9 @@ from django import http
 from django.http.response import Http404, HttpResponseNotFound
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
+from django.dispatch import receiver
+from django.db.models.signals import post_save
+from rest_framework.permissions import IsAuthenticated
 
 def index(request):
     return render(request, 'practice_project/index.html')
@@ -126,6 +133,10 @@ def view_client(request):
         if(filter_form.cleaned_data['ordering']):
             dataset = dataset.order_by(filter_form.cleaned_data['ordering']) 
     return render(request, 'practice_project/view_client.html', {'dataset': dataset, 'filter_form': filter_form})    
+
+def view_order_extra(request):
+    dataset = Order.objects.values('id', 'id_client_id__surname', 'id_client_id__name', 'id_client_id__patronymic', 'id_client_id__city', 'id_client_id__street', 'id_client_id__house', 'id_client_id__flat', 'id_proc_id', 'id_proc_id__manufacturer', 'id_proc_id__model', 'id_proc_id__frequency', 'id_proc_id__price', 'id_video_id', 'id_video_id__manufacturer', 'id_video_id__model', 'id_video_id__memory_size', 'id_video_id__price', 'id_mother_id', 'id_mother_id__manufacturer', 'id_mother_id__model', 'id_mother_id__max_memory_frequency', 'id_mother_id__price')
+    return render(request, 'practice_project/view_order_extra.html', {'dataset': dataset})
 
 def change_delete(request):
     return render(request, 'practice_project/change_delete.html')
@@ -264,6 +275,20 @@ def update_order(request, id):
             return render(request, "practice_project/update_order.html", {"order": order})
     except Order.DoesNotExist:
         return HttpResponseNotFound("<h2>Заказ не найден</h2>")
+
+
+def reg_user(request):
+    if (request.method == 'POST'):
+        form = AddClient(request.POST, request.FILES)
+        if (form.is_valid()):
+            form.save()
+            return redirect('home')
+    else:
+        form = AddClient()
+    return render(request, "practice_project/reg_user.html", {"form": form})
+  
+def auth_user(request):
+    return redirect('auth_user')
 
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()

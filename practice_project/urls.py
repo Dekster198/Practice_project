@@ -26,6 +26,8 @@ from firstapp import views
 
 urlpatterns = [
     path('', views.index, name='home'),
+    path('reg_user/', views.reg_user, name='reg_user'),
+    path('auth_user/', views.auth_user, name='auth_user'),
     path('change_create/', views.change_create, name='change_create'),
     path('add_proc/', views.add_proc, name='add_proc'),
     path('add_video/', views.add_video, name='add_video'),
@@ -48,6 +50,7 @@ urlpatterns = [
     path('view_mother/delete_mother/<int:id>/', views.delete_mother, name='delete_mother'),
     path('view_client/delete_client/<int:id>/', views.delete_client, name='delete_client'),
     path('view_order/delete_order/<int:id>/', views.delete_order, name='delete_order'),
+    path('view_order_extra/', views.view_order_extra, name='view_order_extra'),
     path('api_auth/', include('rest_framework.urls')),
     path('user/', views.UserList.as_view()),
     path('user/<int:pk>/', views.UserDetail.as_view()),

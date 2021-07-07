@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <link rel="shortcut icon" href="/static/images/logo/logo.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <title>Список заказов</title>
+</head>
+
+<body>
+  <h1 align="center">Подробный список заказов</h1>
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th>ID заказа</th>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Город</th>
+        <th>Улица</th>
+        <th>Дом</th>
+        <th>Квартира</th>
+        <th>ID процессора</th>
+        <th>Изготовитель процессора</th>
+        <th>Модель процессора</th>
+        <th>Тактовая частота</th>
+        <th>Цена</th>
+        <th>ID видеокарты</th>
+        <th>Изготовитель видеокарты</th>
+        <th>Модель видеокарты</th>
+        <th>Объём памяти</th>
+        <th>Цена</th>
+        <th>ID материнской платы</th>
+        <th>Изготовитель материнской платы</th>
+        <th>Модель материнской платы</th>
+        <th>Максимальная частота памяти</th>
+        <th>Цена</th>
+      </tr>
+      {% for data in dataset %}
+      <tr>
+        <td>{{data.id}}</td>
+        <td>{{data.id_client_id__surname}}</td>
+        <td>{{data.id_client_id__name}}</td>
+        <td>{{data.id_client_id__patronymic}}</td>
+        <td>{{data.id_client_id__city}}</td>
+        <td>{{data.id_client_id__street}}</td>
+        <td>{{data.id_client_id__house}}</td>
+        <td>{{data.id_client_id__flat}}</td>
+        <td>{{data.id_proc_id}}</td>
+        <td>{{data.id_proc_id__manufacturer}}</td>
+        <td>{{data.id_proc_id__model}}</td>
+        <td>{{data.id_proc_id__frequency}}</td>
+        <td>{{data.id_proc_id__price}}</td>
+        <td>{{data.id_video_id}}</td>
+        <td>{{data.id_video_id__manufacturer}}</td>
+        <td>{{data.id_video_id__model}}</td>
+        <td>{{data.id_video_id__memory_size}}</td>
+        <td>{{data.id_video_id__price}}</td>
+        <td>{{data.id_mother_id}}</td>
+        <td>{{data.id_mother_id__manufacturer}}</td>
+        <td>{{data.id_mother_id__model}}</td>
+        <td>{{data.id_mother_id__max_memory_frequency}}</td>
+        <td>{{data.id_mother_id__price}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <br>
+  <a class="btn btn-lg btn-secondary" href="{% url 'change_rud' %}" role="bytton">Вернуться к выбору</a>
+</body>
+
+</html>

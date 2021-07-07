@@ -2,6 +2,7 @@ from django import forms
 from django.forms import fields
 from django.shortcuts import resolve_url
 from .models import *
+from django.contrib.auth.models import User
 
 class AddProc(forms.ModelForm):
     class Meta:
@@ -17,6 +18,7 @@ class AddMother(forms.ModelForm):
     class Meta:
         model = Motherboard
         fields = ['manufacturer', 'model', 'socket', 'chipset', 'memory_slots', 'max_memory_frequency', 'quantity', 'price', 'photo']
+
 
 class AddClient(forms.ModelForm):
     class Meta:
@@ -69,4 +71,3 @@ class DelClient(forms.Form):
 
 class DelOrder(forms.Form):
     id = forms.IntegerField()
-    
